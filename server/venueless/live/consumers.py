@@ -151,7 +151,7 @@ class MainConsumer(AsyncJsonWebsocketConsumer):
             return
 
         if not self.user:
-            if content[0] == "authenticate":
+            if content[0] == "authenticate" and self.world:
                 await self.world.refresh_from_db_if_outdated(allowed_age=30)
                 await self.components["user"].login(content[-1])
             else:

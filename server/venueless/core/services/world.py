@@ -79,11 +79,11 @@ class WorldConfigSerializer(serializers.Serializer):
 
 
 @database_sync_to_async
-def _get_world(world_id):
+def _get_world(world_id) -> World | None:
     return World.objects.filter(id=world_id).first()
 
 
-async def get_world(world_id):
+async def get_world(world_id) -> World | None:
     world = await _get_world(world_id)
     return world
 
