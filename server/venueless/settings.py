@@ -96,7 +96,8 @@ DATABASES = {
             "VENUELESS_DB_NAME", config.get("database", "name", fallback="venueless")
         ),
         "USER": os.getenv(
-            "VENUELESS_DB_USER", config.get("database", "user", fallback="venueless")
+            # Fallback to the same Linux user who is running this app.
+            "VENUELESS_DB_USER", config.get("database", "user", fallback="")
         ),
         "PASSWORD": os.getenv(
             "VENUELESS_DB_PASS", config.get("database", "password", fallback="")
